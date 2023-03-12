@@ -104,7 +104,6 @@ if mode == 'TO':
                 pass
             else:
                 comms.sock.send(command.encode())
-                print('Sent command')
                 print(comms.sock.recv(1024).decode('utf-8'))
         except KeyboardInterrupt:
             comms.sock.send(b'CLOSE')
