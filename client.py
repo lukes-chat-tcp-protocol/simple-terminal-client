@@ -100,8 +100,11 @@ if mode == 'TO':
                 comms.sock.send(b'CLOSE')
                 os.remove('.session_id')
                 break
+            elif command.replace(' ', '') == '':
+                pass
             else:
                 comms.sock.send(command.encode())
+                print('Sent command')
                 print(comms.sock.recv(1024).decode('utf-8'))
         except KeyboardInterrupt:
             comms.sock.send(b'CLOSE')
